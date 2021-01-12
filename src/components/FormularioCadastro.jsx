@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {Button, TextField, Switch, FormControlLabel} from '@material-ui/core';
 
-function FormularioCadastro({aoEnviar}) { // props possui a propriedade 'aoEnviar' e essa foi descontraída e passada por parâmetro
+function FormularioCadastro({aoEnviar, validarCPF}) { // props possui a propriedade 'aoEnviar' e essa foi descontraída e passada por parâmetro
     const [nome, setNome] = useState("Gilberto");
     const [sobrenome, setSobrenome] = useState("");
     const [cpf, setCpf] = useState("");
     const [promocoes, setPromocoes] = useState(true);
     const [novidades, setNovidades] = useState(false);
+    const [erros, setErros] = useState({cpf: {valido: true, texto:""}});
     
     return (
         <form onSubmit={(event) => {
@@ -37,8 +38,14 @@ function FormularioCadastro({aoEnviar}) { // props possui a propriedade 'aoEnvia
 
             <TextField 
                 value={cpf}
+                error={!erros.cpf.valido}
+                helperText={erros.cpf.texto}
                 onChange={(event) => {
                     setCpf(event.target.value);
+                }}
+                onBlur={(event) => {
+                    const eValido = validarCPF(cpf);
+                    setErros({cpf:eValido});
                 }}
                 id="cpf" 
                 label="CPF" 
