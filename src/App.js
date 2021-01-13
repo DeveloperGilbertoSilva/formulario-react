@@ -10,9 +10,9 @@ function App() {
 
     const validarCPF = (cpf) => {
         if(cpf.length !== 11){
-            return {valido: false, texto:"CPF deve ter 11 dígitos"};
+            return {valido: false, texto:"CPF deve ter 11 dígitos", desabilita:true};
         } else{
-            return {valido: true, texto:""};
+            return {valido: true, texto:"", desabilita:false};
         }
     };
 
