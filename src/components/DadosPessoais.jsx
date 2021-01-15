@@ -7,7 +7,7 @@ function DadosPessoais({aoEnviar, validarCPF}) { // props possui a propriedade '
     const [cpf, setCpf] = useState("");
     const [promocoes, setPromocoes] = useState(true);
     const [novidades, setNovidades] = useState(false);
-    const [erros, setErros] = useState({cpf: {valido: true, texto:"", desabilita:true}});
+    const [erros, setErros] = useState({cpf: {valido: true, texto:""}});
     
     return (
         <form onSubmit={(event) => {
@@ -22,6 +22,7 @@ function DadosPessoais({aoEnviar, validarCPF}) { // props possui a propriedade '
                 id="nome" 
                 label="Nome" 
                 variant="outlined" 
+                required
                 fullWidth 
                 margin="normal"/>
 
@@ -33,6 +34,7 @@ function DadosPessoais({aoEnviar, validarCPF}) { // props possui a propriedade '
                 id="sobrenome" 
                 label="Sobrenome" 
                 variant="outlined" 
+                required
                 fullWidth 
                 margin="normal"/>
 
@@ -50,6 +52,7 @@ function DadosPessoais({aoEnviar, validarCPF}) { // props possui a propriedade '
                 id="cpf" 
                 label="CPF" 
                 variant="outlined" 
+                required
                 fullWidth 
                 margin="normal"/>
 
@@ -79,7 +82,7 @@ function DadosPessoais({aoEnviar, validarCPF}) { // props possui a propriedade '
                 label="Novidades"/>
 
 
-            <Button type="submit" variant="contained" color="primary" disabled={erros.cpf.desabilita}>Cadastrar</Button>
+            <Button type="submit" variant="contained" color="primary">Cadastrar</Button>
         </form>
     );
 }
